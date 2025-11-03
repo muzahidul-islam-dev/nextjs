@@ -1,3 +1,4 @@
+import Image from "next/image";
 import MealSearchInput from "./components/MealSearchInput";
 
 
@@ -30,7 +31,12 @@ async function MealsPage({searchParams}: any) {
             </div>
             <div className="grid">
                 {
-                    meals?.map((singleMeal: any) => <div>{singleMeal.strMeal}</div>)
+                    meals?.map((singleMeal: any, index: number) => {
+                        return <div key={index}>
+                            <div><Image width={641} height={641} src={singleMeal?.strMealThumb} alt={singleMeal?.strMeal} /></div>
+                            <div>{singleMeal.strMeal}</div>
+                        </div>
+                    })
                 }
             </div>
         </div>
